@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieCartMVC", "CookieCartMVC\CookieCartMVC.csproj", "{DF97C767-FF8D-4A47-9D69-C20039EE2080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieCartMVC.DataAccessLayer", "CookieCartMVC.DataAccessLayer\CookieCartMVC.DataAccessLayer.csproj", "{EF400224-DABD-4C6C-9752-6B65718A7B00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF97C767-FF8D-4A47-9D69-C20039EE2080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF97C767-FF8D-4A47-9D69-C20039EE2080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF97C767-FF8D-4A47-9D69-C20039EE2080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF97C767-FF8D-4A47-9D69-C20039EE2080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF400224-DABD-4C6C-9752-6B65718A7B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF400224-DABD-4C6C-9752-6B65718A7B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF400224-DABD-4C6C-9752-6B65718A7B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF400224-DABD-4C6C-9752-6B65718A7B00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E30C41E5-9FD4-4C2A-A5F1-E63806372343}
+	EndGlobalSection
+EndGlobal

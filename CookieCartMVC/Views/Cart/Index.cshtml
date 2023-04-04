@@ -1,0 +1,41 @@
+﻿@model CookieCartMVC.Models.Cart;
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cart</h1>
+    @if (Model == null || Model.ProductQuantities.Count == 0)
+    {
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3>Cart is empty</h3>
+            </div>
+        </div>
+    }
+    else
+    {
+        @foreach (var keyvalue in Model.ProductQuantities)
+        {
+            <div class="row" style="padding-top:2px;">
+                <div class="col-6">
+                    @{ProductQuantity productQuantity = @keyvalue.Value;}
+                    @productQuantity.Quantity @(productQuantity.Name)(s)
+                    at $@productQuantity.Price each
+                </div>
+                <div class="col-3">
+                    total $@productQuantity.GetTotalPrice()
+                    </div>
+                <div class="col-3">
+                    <a class="btn btn-success" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=1})">+1</a>
+                    <a class="btn btn-warning" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=-1})">-1</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Cart", new { id = @productQuantity.Id})"><span class="bi-trash"></span></a>
+
+                </div>
+            </div>
+        }
+    }
+    <p></p>
+    <h3 class="display-6">$@Model.GetTotal() total</h3>
+    <a href="@Url.Action("EmptyCart", "Cart")">Empty cart</a>
+</div>
