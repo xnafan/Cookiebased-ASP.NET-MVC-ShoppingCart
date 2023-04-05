@@ -3,7 +3,7 @@
     ViewData["Title"] = "Cart";
 }
 
-<div class="text-center">
+<div class="text-center" style="width:800px; margin:0px auto;">
     <h1 class="display-4">Cart</h1>
     @if (Model == null || Model.ProductQuantities.Count == 0)
     {
@@ -27,15 +27,15 @@
                     total $@productQuantity.GetTotalPrice()
                     </div>
                 <div class="col-3">
-                    <a class="btn btn-success" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=1})">+1</a>
-                    <a class="btn btn-warning" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=-1})">-1</a>
-                    <a class="btn btn-danger" href="@Url.Action("Delete", "Cart", new { id = @productQuantity.Id})"><span class="bi-trash"></span></a>
+                    <a class="btn btn-primary" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=-1})" title="remove one">-1</a>
+                    <a class="btn btn-primary" href="@Url.Action("Add", "Cart", new { id = @productQuantity.Id, quantity=1})" title="add one">+1</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Cart", new { id = @productQuantity.Id})" title="delete product"><span class="bi-trash"></span></a>
 
                 </div>
             </div>
         }
     }
     <p></p>
-    <h3 class="display-6">$@Model.GetTotal() total</h3>
-    <a href="@Url.Action("EmptyCart", "Cart")">Empty cart</a>
+    <h3 class="display-6">Total: $@Model.GetTotal()</h3>
+    <a class="btn btn-danger" href="@Url.Action("EmptyCart", "Cart")">Empty entire cart <span class="bi bi-trash"></span></a>
 </div>

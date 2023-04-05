@@ -4,16 +4,27 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Products</h1>
+    <h1 class="display-4 text-center">Products</h1>
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Add to basket</th>
+    </tr>
+  </thead>
+  <tbody>
+            
     @foreach (var product in Model)
     {
-        <div class="row">
-            <div class="col-12">
-                <p>@product.Name ($@product.Price)
-                    <a class="btn-sm btn-primary" href="@Url.Action("Add", "Cart", new { id = product.Id, quantity = 1 })"><span class="bi-cart-plus"></span></a>
-                </p>
-            </div>
-        </div>
+    <tr>
+                <th scope="row">@product.Id</th>
+                <td>@product.Name </td>
+            <td>$@product.Price</td>
+                <td>
+                       <a class="btn-sm btn-primary" href="@Url.Action("Add", "Cart", new { id = product.Id, quantity = 1 })">Add to basket<span class="bi-cart-plus" style="margin-left:10px;"></span></a>
+                </td>
+        </tr>
     }
-</div>
+</table>
