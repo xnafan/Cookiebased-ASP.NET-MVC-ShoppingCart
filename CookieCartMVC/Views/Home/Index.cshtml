@@ -1,30 +1,28 @@
 ﻿@using CookieCartMVC.DataAccessLayer;
 @model IEnumerable<Product>;
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Shop";
 }
-
-    <h1 class="display-4 text-center">Products</h1>
-    <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Add to basket</th>
-    </tr>
-  </thead>
-  <tbody>
-            
-    @foreach (var product in Model)
-    {
-    <tr>
+<h1 class="display-4 text-center">Products</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Add to basket</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
                 <th scope="row">@product.Id</th>
                 <td>@product.Name </td>
-            <td>$@product.Price</td>
+                <td>$@product.Price</td>
                 <td>
-                       <a class="btn-sm btn-primary" href="@Url.Action("Add", "Cart", new { id = product.Id, quantity = 1 })">Add to basket<span class="bi-cart-plus" style="margin-left:10px;"></span></a>
+                    <a class="btn-sm btn-primary" href="@Url.Action("Add", "Cart", new { id = product.Id, quantity = 1 })">Add to basket<span class="bi-cart-plus" style="margin-left:10px;"></span></a>
                 </td>
-        </tr>
-    }
+            </tr>
+        }
 </table>

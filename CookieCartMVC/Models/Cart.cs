@@ -1,6 +1,14 @@
 ﻿namespace CookieCartMVC.Models;
+
+/// <summary>
+/// The Cart class encapsulates basic information about products and their quantities.
+/// It stores a reduced version of the Product class, which is the ProductQuantity class,
+/// in order to be able to calculate price per product and total price 
+/// without having to look it up in the database each time it is shown.
+/// </summary>
 public class Cart
 {
+    //This property is public in order for it to be serializable (to JSON in this example)
     public Dictionary<int, ProductQuantity> ProductQuantities { get; set; }
     public Cart(Dictionary<int, ProductQuantity>? productQuantities = null)
     {
@@ -23,16 +31,12 @@ public class Cart
         }
     }
 
-    public void RemoveProduct(int productId)
-    {
-        ProductQuantities.Remove(productId);
-    }
+    public void RemoveProduct(int productId) => ProductQuantities.Remove(productId);
+    public void Update(int productId, int quantity) => ProductQuantities[productId].Quantity = quantity;
 
-    public void Update(int productId, int quantity)
-    {
-        ProductQuantities[productId].Quantity = quantity;
-    }
-
+    #region Helper methods
+    //GetTotal and GetNumberOfProducts are methods instead of readonly properties,
+    //so they don't give any problems during deserialization
     public int GetTotal()
     {
         int total = 0;
@@ -42,14 +46,7 @@ public class Cart
         }
         return total;
     }
-
-    public int GetNumberOfProducts ()
-    {
-         return ProductQuantities.Sum(pq => pq.Value.Quantity);
-    }
-
-    internal void EmptyAll()
-    {
-        ProductQuantities.Clear();
-    }
+    public int GetNumberOfProducts() => ProductQuantities.Sum(pq => pq.Value.Quantity);
+    internal void EmptyAll() => ProductQuantities.Clear();
+    #endregion
 }
