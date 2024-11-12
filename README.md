@@ -15,7 +15,8 @@ The cart is based on two elements, the CartController class and the Cart model c
 ### The CartController
 The [CartController](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/master/CookieCartMVC/Controllers/CartController.cs) is an ASP.NET MVC controller.
 It has a reference to a DAL class where it retrieves the products to display, and uses the Cart class to retrieve and save the contents of the cart.
-![image](https://github.com/user-attachments/assets/39ff4a4b-d0ef-4efe-bb8b-78e977ac134b)
+![image](https://github.com/user-attachments/assets/39ff4a4b-d0ef-4efe-bb8b-78e977ac134b)  
+In a real webshop the CartController would also have a reference to a DAL object to place the order.
 
 
 ### The Cart
