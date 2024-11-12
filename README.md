@@ -25,7 +25,7 @@ In a real webshop the CartController would also have a reference to a DAL object
 
 
 ### The Cart
-The [Cart](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/master/CookieCartMVC/Models/Cart.cs) is basically a wrapper around a C# Dictionary collection which stores [ProductQuantity](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/master/CookieCartMVC/Models/ProductQuantity.cs) helperobjects (value) under the ID of products (key), for easy retrival and look ups. It also serializes and deserializes the car to and from JSON for storage in a cookie.  
+The [Cart](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/master/CookieCartMVC/Models/Cart.cs) is basically a wrapper around a C# Dictionary collection which stores [ProductQuantity](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/master/CookieCartMVC/Models/ProductQuantity.cs) helperobjects (value) under the ID of products (key), for easy retrival and look ups. It also serializes and deserializes the cart to and from JSON for storage in a cookie.  
 
 ![image](https://github.com/user-attachments/assets/b5b026b9-ec7e-46bf-b644-0b5a1a628d15)
 
