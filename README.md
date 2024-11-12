@@ -5,11 +5,12 @@ This project showcases a simple ASP.NET MVC project which
 - has functionality for adding/removing items and emptying both single product types and the basket
 
 ## The shop
-<img width="570" alt="image" src="https://github.com/user-attachments/assets/23202887-04f1-42bd-b48d-2e36a8764470">
+<img width="570" alt="image" src="https://github.com/user-attachments/assets/23202887-04f1-42bd-b48d-2e36a8764470">  
 The shop is just a list of products with links to the CartController for adding or adjusting the contents of the cart.
 
 ## The cart
-<img width="585" alt="image" src="https://github.com/user-attachments/assets/bfea4e7f-529b-4756-9ca2-f15f557c6b52">
+<img width="585" alt="image" src="https://github.com/user-attachments/assets/bfea4e7f-529b-4756-9ca2-f15f557c6b52">  
+
 The cart is based on two elements, the CartController class and the Cart model class:
 
 ### The CartController
