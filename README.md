@@ -29,4 +29,6 @@ The [Cart](https://github.com/xnafan/Cookiebased-ASP.NET-MVC-ShoppingCart/blob/m
 
 ![image](https://github.com/user-attachments/assets/b5b026b9-ec7e-46bf-b644-0b5a1a628d15)
 
+The ProductQuantity objects are simple objects with only the necessary data to display a product's name, the price, the total price and store the ID of the product.
+
 
