@@ -20,37 +20,28 @@ public class CartController : Controller
     // GET: CartController/Edit/5?quantity=3
     public ActionResult Edit(int id, int quantity)
     {
-        Cart cart = GetCartFromCookie();
-        cart.Update(id, quantity);
-        SaveCartToCookie(cart);
+        var cart = LoadChangeAndSaveCart(cart => cart.ChangeQuantity(new ProductQuantity(_productDao.GetProductById(id), quantity)));
         return View("Index", cart);
     }
 
     // GET: CartController/Add/5?quantity=3
     public ActionResult Add(int id, int quantity)
     {
-        Cart cart = GetCartFromCookie();
-        Product? product = _productDao.GetProductById(id);
-        cart.ChangeQuantity(new ProductQuantity(product, quantity));
-        SaveCartToCookie(cart);
-        return View("Index", cart);
+        var cart = LoadChangeAndSaveCart(cart => cart.ChangeQuantity(new ProductQuantity(_productDao.GetProductById(id), quantity)));
+        return RedirectToAction("Index", cart);
     }
 
     // GET: CartController/Delete/5
     public ActionResult Delete(int id)
     {
-        Cart cart = GetCartFromCookie();
-        cart.RemoveProduct(id);
-        SaveCartToCookie(cart);
-        return View("Index", cart);
+        var cart = LoadChangeAndSaveCart(cart => cart.RemoveProduct(id));
+        return RedirectToAction("Index", cart);
     }
 
     public ActionResult EmptyCart()
     {
-        Cart cart = GetCartFromCookie();
-        cart.EmptyAll();
-        SaveCartToCookie(cart);
-        return View("Index", cart);
+        var cart = LoadChangeAndSaveCart(cart => cart.EmptyAll());
+        return RedirectToAction("Index", cart);
     }
     private void SaveCartToCookie(Cart cart)
     {
@@ -65,5 +56,13 @@ public class CartController : Controller
         Request.Cookies.TryGetValue("Cart", out string? cookie);
         if (cookie == null) { return new Cart(); }
         return JsonSerializer.Deserialize<Cart>(cookie) ?? new Cart();
+    }
+    private Cart LoadChangeAndSaveCart(Action<Cart> action)
+    {
+        Cart cart = GetCartFromCookie();
+        action(cart);
+        ViewBag.Cart = cart;
+        SaveCartToCookie(cart);
+        return cart;
     }
 }

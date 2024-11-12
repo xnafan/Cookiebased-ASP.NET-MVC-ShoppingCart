@@ -30,17 +30,19 @@
                     </ul>
                 </div>
             </div>
-        @{
-            Context.Request.Cookies.TryGetValue("Cart", out string? cookie);
-            if (cookie != null)
-            {
-                Cart cart = JsonSerializer.Deserialize<Cart>(cookie);
-                if(cart != null)
+            @{
+                Context.Request.Cookies.TryGetValue("Cart", out string? cookie);
+                Cart cart = null;
+                if(cookie != null)
                 {
-                     <a class="text-light" style="width:200px" href="@Url.Action("Index", "Cart")">View cart ($@cart.GetTotal())<span class="bi-cart" style="margin-left:10px;"></span></a>
+                cart = ViewBag.Cart ?? JsonSerializer.Deserialize<Cart>(cookie ?? "");
                 }
+                if (cart != null && cookie!= null)
+                {
+                    <a class="text-light" style="width:220px" href="@Url.Action("Index", "Cart")">Cart: @cart.GetNumberOfProducts() products ($@cart.GetTotal())<span class="bi-cart" style="margin-left:10px;"></span></a>
+                }
+
             }
-        }
         </nav>
     </header>
     <div class="container">
