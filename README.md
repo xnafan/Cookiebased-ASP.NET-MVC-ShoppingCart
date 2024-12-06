@@ -64,6 +64,7 @@ The cart only stores a minimum of info about the products in order to display th
 - Name
 - Price
 - Quantity
+
 This is done in order to avoid having to request this information from the data source (database/API/etc.) every time the cart is displayed.
 You have to provide the CartController with a way to get this productinfo, when items are added to the cart, so ProductQuantity objects can be created and stored in the cart.  
 In the code sample an IProductDao is used, but the only necessary code, for the cart to work, is a method which can retrieve a product object given an Id, so the properties from that product can be copied to a ProductQuantity object.
